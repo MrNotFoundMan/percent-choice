@@ -14,9 +14,9 @@ class Percent:
             raise ValueError(
                 "objects cannot be empty"
             )
-        if not all(isinstance(x, int) for x in chances) and any(x < 0 for x in chances):
+        if not all(isinstance(x, int) for x in chances) or any(x < 0 for x in chances):
             raise TypeError(
-                "all values in chances must be int and values in chances cannot be negative"
+                "all values in chances must be int or values in chances cannot be negative"
             )
         if sum(chances) != 100:
             raise ValueError(
