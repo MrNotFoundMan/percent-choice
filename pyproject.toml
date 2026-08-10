@@ -1,0 +1,17 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "percent-choice"
+version = "0.1.0"
+description = "Fast percentage-based random choice for Python"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "MrNotFoundMan"}
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/percent_choice"]
