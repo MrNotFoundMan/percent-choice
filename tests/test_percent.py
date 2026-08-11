@@ -1,5 +1,5 @@
+#``` bash: pip install percent_choice \n pip install pytest
 import pytest
-
 from percent_choice import Percent, SecurePercent
 
 
@@ -65,7 +65,45 @@ def test_percent_chances_must_be_int():
             ["green", "blue"],
             [50, 50.0]
         )
+from percent_choice import Percent,SecurePercent
+#для того чтобы работать с моим модулем нужно передать список с названиями класами и так далее
+#затем надо передать список с процентами, 0 индекс в первом списке равен 0 индексу во втором списке
 
+#To work with my module, you need to pass a list containing class, names and so on.
+#Then you need to pass the list of percentages; the element at index 0 in the first list corresponds to the element at index 0 in the second list.
+choice = Percent(["Common","Uncommon","Rare","Epic","Mythical","Legendary"],[40,30,20,8.99,1,0.01])
+#например шанс у Common равен 40% так как индекс 0 в первом списке равен индексу 0 во втором
+#For example, the chance for "Common" is 40%, since index 0 in the first list corresponds to index 0 in the second.
+
+
+
+#тест на время милион итераций всего за 0.42462172900013684 Timing test: a million iterations in just 0.42462172900013684.
+"""import time
+start = time.perf_counter()
+for _ in range(1_000_000):
+    choice.get()
+end = time.perf_counter()
+print(end - start)"""
+
+
+
+
+
+#тест на работу процентов  Percentage calculation test
+"""from collections import Counter
+results = Counter(choice.get() for _ in range(1_000_000))
+print(results)
+for name, count in results.items():
+    print(name,count / 1_000_000 * 100,"%")"""
+#за милион раз прокручиваний получились такие ответы  After running through the process a million times, these are the answers I got.
+#Counter({'Common': 399745, 'Uncommon': 300666, 'Rare': 199788, 'Epic': 89733, 'Mythical': 9972, 'Legendary': 96})
+# такой ответ + - он совпадает  This answer matches + - .
+"""Common 39.960699999999996 %
+Epic 9.006599999999999 %
+Uncommon 29.976999999999997 %
+Rare 20.0342 %
+Mythical 1.0109 %
+Legendary 0.0106 %"""
 
 # =========================
 # SecurePercent

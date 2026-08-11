@@ -1,3 +1,2 @@
 from .percent import Percent
-
-__all__ = ["Percent"]
+__all__ = ["Percent", "SecurePercent"]
